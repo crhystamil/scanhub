@@ -1,0 +1,98 @@
+{% extends 'scanhub/base_c.html' %}
+{% block content%}
+
+<div class="col-md-12">
+    <div class="card card-plain">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title">Top 20 services</h4>
+        </div>
+        <div class="card-content table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr><th>Service</th>
+                	<th>Port</th>
+                	<th>Bar</th>
+                </tr></thead>
+                <tbody>
+                    {% for s in service %}
+                    <tr>
+                        {% for a in s%}
+                            {% if forloop.counter0 == 0%}
+                            <td><a href='/collections/{{id_c}}/query/search=service:"{{a}}"'>{{ a }}</a></td>
+                            {% elif forloop.counter0 == 1  %}
+                            <td>{{ a }}</td>
+                            {% elif forloop.counter0 == 2 %}
+                            <td><progress value="{{a}}" max="{{total}}"></progress></td>
+                            {% endif %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+        </div>
+    </div>
+ </div>
+<div class="col-md-12">
+    <div class="card card-plain">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title">TOP 20 OPERATING SYSTEMS</h4>
+        </div>
+        <div class="card-content table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr><th>Service</th>
+                	<th>Port</th>
+                	<th>Bar</th>
+                </tr></thead>
+                <tbody>
+                        {% for v in th %}
+                    <tr>
+                            {% for c in v %}
+                                {% if forloop.counter0 == 0 %}
+                                <td><a href='/collections/{{id_c}}/query/search=os:"{{c}}"'>{{c}}</a></td>
+                                {% elif forloop.counter0 == 1%}
+                                <td>{{ c }}</td>
+                                {% else %}
+                                <td><progress value="{{ c }}" max=""></progress></td>
+                                {% endif %}
+                            {% endfor %}
+                    </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+ </div>
+<div class="col-md-12">
+    <div class="card card-plain">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title">TOP 20 DOMAINS</h4>
+        </div>
+        <div class="card-content table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr><th>Service</th>
+                	<th>Port</th>
+                	<th>Bar</th>
+                </tr></thead>
+                <tbody>
+                        {% for v in to %}
+                    <tr>
+                            {% for c in v %}
+                                {% if forloop.counter0 == 0 %}
+                                <td><a href='/collections/{{id_c}}/query/search=org:"{{c}}"'>{{c}}</a></td>
+                                {% elif forloop.counter0 == 1%}
+                                <td>{{ c }}</td>
+                                {% else %}
+                                <td><progress value="{{ c }}" max=""></progress></td>
+                                {% endif %}
+                            {% endfor %}
+                    </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+ </div>
+
+{% endblock content %}

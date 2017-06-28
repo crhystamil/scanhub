@@ -1,0 +1,75 @@
+{% extends 'scanhub/base.html' %}
+{% block status %}
+	                <li >
+	                    <a href="/dashboard/">
+	                        <i class="material-icons">dashboard</i>
+	                        <p>Dashboard</p>
+	                    </a>
+	                </li>
+	                <li class="active">
+                            <a href="/collections">
+	                        <i class="material-icons">library_books</i>
+	                        <p>Collections</p>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="#">
+	                        <i class="material-icons">account_circle</i>
+	                        <p>Perfil</p>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="#">
+	                        <i class="material-icons">question_answer</i>
+	                        <p>Contactanos</p>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="notifications.html">
+	                        <i class="material-icons text-gray">notifications</i>
+	                        <p>Notifications</p>
+	                    </a>
+	                </li>
+
+{% endblock status %}
+{% block content %}
+
+<a href="/new" class="btn pull-right btn-info btn-round btn-xs"><i class="material-icons">note_add</i> create new collection</a> 
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="green">
+                <h4 class="title">Collection of repository</h4>
+
+                <p class="category">Here is a list of repositories </p>
+            </div>
+            <div class="card-content table-responsive">
+                <table class="table">
+                    <thead class="Paragraph"><tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Storage Size</th>
+                        <th>Number of uploads</th>
+                        <th>Action</th>
+                    </tr></thead>
+                    <tbody>
+                        {% for collection in collections %}
+                        <tr>
+                            <td>{{ collection.name }}</td>
+                            <td>{{ collection.description }}</td>
+                            <td>{{ collection.storage_size }}</td>
+                            <td>{{ collection.number_uploads }}</td>
+                            <td> 
+                                <a href="/collections/{{ collection.id}}/" class="btn btn-primary btn-round btn-xs">View<div class="ripple-container"></div></a> 
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

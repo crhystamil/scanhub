@@ -1,0 +1,31 @@
+{% extends 'scanhub/base_c.html'%}
+
+{% block content %}
+<div class="span8 main-content">
+<div class="well hub-upload">
+  <h3>Upload Nmap XML</h3>
+  <form action="#" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }} 
+          <button type="submit">Upload</button>
+    </div>
+  </form>
+</div>
+<div class="text-center">Or
+<br><br>
+</div>
+<div class="well hub-upload">
+  <h3>Upload with Curl</h3>
+  <p>It's also possible to upload data directly to this scanhub from the server that contains the XML using the 'curl' command-line tool.
+
+  </p><code>curl -F nmap_xml=@YOUR_NMAP_XML_FILE "https://scanhub.shodan.io/repository/upload/kio-networks?key=2kis2ZSGEM06jzoPZi8zUSsDIYLk3Aqt"
+</code><br><br>
+  <p>For example, if you've stored your Nmap XML results in the current directory with a filename of 'nmap-results.xml':
+
+  </p><code>curl -F nmap_xml=@nmap-results.xml "https://scanhub.shodan.io/repository/upload/kio-networks?key=2kis2ZSGEM06jzoPZi8zUSsDIYLk3Aqt"
+</code>
+</div>
+</div>
+
+{% endblock content%}
+

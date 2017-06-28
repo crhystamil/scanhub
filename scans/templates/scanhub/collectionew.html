@@ -1,0 +1,75 @@
+{% extends 'scanhub/base.html' %}
+{% block status %}
+	                <li >
+	                    <a href="/dashboard/">
+	                        <i class="material-icons">dashboard</i>
+	                        <p>Dashboard</p>
+	                    </a>
+	                </li>
+	                <li class="active">
+                            <a href="/collections">
+	                        <i class="material-icons">library_books</i>
+	                        <p>Collections</p>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="#">
+	                        <i class="material-icons">account_circle</i>
+	                        <p>Perfil</p>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="#">
+	                        <i class="material-icons">question_answer</i>
+	                        <p>Contactanos</p>
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="notifications.html">
+	                        <i class="material-icons text-gray">notifications</i>
+	                        <p>Notifications</p>
+	                    </a>
+	                </li>
+
+{% endblock status %}
+{% block content %}
+<div class="row">
+<div class="col-md-8">
+	                        <div class="card">
+	                            <div class="card-header" data-background-color="green">
+	                                <h4 class="title">Create Collection</h4>
+	                            </div>
+	                            <div class="card-content">
+                                        <form method="POST" action="{% url 'new_collection' %}">
+                                            {% csrf_token %}
+	                                    <div class="row">
+                                            <div class="col-md-5">
+                                            <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Collection Name</label>
+            {{ form.name }}
+                                            <span class="material-input"></span></div>
+                                            </div>
+
+
+
+
+
+
+ <div class="col-md-12">
+ <div class="form-group">
+ <label>Description</label>
+ <div class="form-group label-floating is-empty">
+            {{ form.description }}
+<span class="material-input"></span></div>
+</div>
+</div>
+
+	                                    <button type="submit" class="btn btn-primary pull-right">Create</button>
+	                                    <div class="clearfix"></div>
+	                                </form>
+	                            </div>
+	                        </div>
+	                    </div>
+    </div>
+</div>
+{% endblock content %}
